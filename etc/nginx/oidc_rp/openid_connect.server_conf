@@ -8,6 +8,7 @@
 
     location = /_jwks_uri {
         internal;
+        auth_jwt off;
         proxy_cache jwk;                              # Cache the JWK Set recieved from IdP
         proxy_cache_valid 200 12h;                    # How long to consider keys "fresh"
         proxy_cache_use_stale error timeout updating; # Use old JWK Set if cannot reach IdP
@@ -19,6 +20,7 @@
     }
 
     location @do_oidc_flow {
+        auth_jwt off;
         status_zone "OIDC start";
         js_content oidc.auth;
         default_type text/plain; # In case we throw an error
@@ -26,6 +28,7 @@
 
     set $redir_location "/_codexch";
     location = /_codexch {
+        auth_jwt off;
         # This location is called by the IdP after successful authentication
         status_zone "OIDC code exchange";
         js_content oidc.codeExchange;
