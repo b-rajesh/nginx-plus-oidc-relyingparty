@@ -32,6 +32,7 @@ $ docker run --name mynginxplus_simple  -p 80:80 -p 443:443 -p 8080:8080 -p 8000
 ```bash
 # Open your favourite dashboard and enter the below url
 $ http://localhost:8080/dashboard.html
+$ Aug…eam/hello-nginxplus docker run -p 3600:8080 --rm -t brajesh79/http-https-echo
 ```
 
 ### Start testing the deployed API :
